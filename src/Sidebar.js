@@ -1,5 +1,7 @@
+//import useState hook to create menu collapse state
 import React, {useState} from "react";
-import {Link} from 'react-router-dom'
+
+//import react pro sidebar components
 import {
     ProSidebar,
     Menu,
@@ -8,96 +10,80 @@ import {
     SidebarFooter,
     SidebarContent,
 } from "react-pro-sidebar";
-import ImageIcon from '@mui/icons-material/Image';
-import GifIcon from '@mui/icons-material/Gif';
-import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
-import MovieIcon from '@mui/icons-material/Movie';
-import SportsIcon from '@mui/icons-material/Sports';
-import ScienceIcon from '@mui/icons-material/Science';
-import SportsMartialArtsIcon from '@mui/icons-material/SportsMartialArts';
-import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
-import LogoutIcon from '@mui/icons-material/Logout';
-// import {FiArrowLeftCircle, FiArrowRightCircle} from "react-icons/fi";
+
+//import icons from react icons
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import CollectionsIcon from '@mui/icons-material/Collections';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
+import {FaList, FaRegHeart} from "react-icons/fa";
+import {FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle} from "react-icons/fi";
+// import { RiPencilLine } from "react-icons/ri";
+import {BiCog} from "react-icons/bi";
+
+
+//import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
 import "./App.css";
 
+
 const Header = () => {
-    // const [menuCollapse, setMenuCollapse] = useState(false)
-    // const menuIconClick = () => {
-    //     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
-    // };
+
+    //create initial menuCollapse state using useState hook
+    const [menuCollapse, setMenuCollapse] = useState(false)
+
+    //create a custom function that will change menucollapse state from false to true and true to false
+    const menuIconClick = () => {
+        //condition checking to change state from true to false and vice versa
+        menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
+    };
 
     return (
-        <div className="position-relative" >
+        <>
             <div id="header">
-                <ProSidebar >
+                {/* collapsed props to change menu size using menucollapse state */}
+                <ProSidebar collapsed={menuCollapse}>
                     <SidebarHeader>
-                        <div >
-                            <h5 className="mx-4">Logo</h5>
+                        <div className="logotext">
+                            {/* small and big change using menucollapse state */}
+                            <p>{menuCollapse ? "Logo" : "Big Logo"}</p>
                         </div>
-                        {/*<div className="closemenu" onClick={menuIconClick}>*/}
-                        {/*    {menuCollapse ? (*/}
-                        {/*        <FiArrowRightCircle/>*/}
-                        {/*    ) : (*/}
-                        {/*        <FiArrowLeftCircle/>*/}
-                        {/*    )}*/}
-                        {/*</div>*/}
+                        <div className="closemenu" onClick={menuIconClick}>
+                            {/* changing menu collapse icon on click */}
+                            {menuCollapse ? (
+                                <FiArrowRightCircle/>
+                            ) : (
+                                <FiArrowLeftCircle/>
+                            )}
+                        </div>
                     </SidebarHeader>
-                    {/*<SidebarHeader>*/}
-                    {/*    <div className="logotext my-2">*/}
-                    {/*        <p style={{color:"white"}}>Memes Type</p>*/}
-                    {/*    </div>*/}
-                    {/*</SidebarHeader>*/}
                     <SidebarContent>
-                        <Menu >
-                            <MenuItem className="sidebar-item color">
-                                <ImageIcon className="color mx-2 "/><br/>
-                                <Link to="/images" style={{color: 'white'}}>Images</Link>
+                        <Menu iconShape="square">
+                            <MenuItem icon={<DashboardIcon/>} className="sidebar-item color">
+                                Dashboard
                             </MenuItem>
-                            <MenuItem className="sidebar-item">
-                                <GifIcon className="color mx-2"/><br/>
-                                <Link to="/gifs" style={{color: 'white'}}>GIFs</Link>
+                            <MenuItem icon={<CollectionsIcon/>} className="sidebar-item color">
+                                Gallary
                             </MenuItem>
-                            <MenuItem className="sidebar-item">
-                                <OndemandVideoIcon className="color mx-2"/><br/>
-                                <Link to="/videos" style={{color: 'white'}}>Videos</Link>
+                            <MenuItem icon={<AttachMoneyIcon/>} className="sidebar-item color">
+                                Salary
                             </MenuItem>
-                            <MenuItem className="sidebar-item">
-                                <SportsMartialArtsIcon className="color mx-2"/><br/>
-                                <Link to="/" style={{color: 'white'}}>Anime</Link>
+                            <MenuItem icon={<HolidayVillageIcon/>} className="sidebar-item color">
+                                Holiday
                             </MenuItem>
-                            <MenuItem className="sidebar-item">
-                                <MovieIcon className="color mx-2"/><br/>
-                                <Link to="/" style={{color: 'white'}}>Movies</Link>
-                            </MenuItem>
-                            <MenuItem className="sidebar-item">
-                                <SportsIcon className="color mx-2"/><br/>
-                                <Link to="/" style={{color: 'white'}}>Sports</Link>
-                            </MenuItem>
-                            <MenuItem className="sidebar-item">
-                                <PeopleOutlineIcon className="color mx-2"/><br/>
-                                <Link to="/" style={{color: 'white'}}>Politics</Link>
-                            </MenuItem>
-                            <MenuItem className="sidebar-item">
-                                <ScienceIcon className="color mx-2"/><br/>
-                                <Link to="/" style={{color: 'white'}}>Tech</Link>
-                            </MenuItem>
-
                         </Menu>
                     </SidebarContent>
                     <SidebarFooter>
                         <Menu iconShape="square">
-
-                            <MenuItem className="sidebar-item">
-                                <LogoutIcon className="color mx-2"/><br/>
-                                <Link to="/">Log out</Link></MenuItem>
+                            <MenuItem icon={<FiLogOut/>} className="sidebar-item">
+                                Logout
+                            </MenuItem>
                         </Menu>
                     </SidebarFooter>
                 </ProSidebar>
             </div>
-        </div>
+        </>
     );
 };
 
 export default Header;
-

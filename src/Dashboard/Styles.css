@@ -1,0 +1,10 @@
+.dashboard{
+    display: flex;
+    flex-direction: row;
+}
+.user-data{
+    width: 30rem;
+    background-image: linear-gradient(5deg,#fbf4cd,white);
+    margin-top: 5rem;
+    margin-left: 45rem;
+}
