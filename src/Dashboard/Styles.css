@@ -4,7 +4,23 @@
 }
 .user-data{
     width: 30rem;
-    background-image: linear-gradient(5deg,#fbf4cd,white);
+    background-image: linear-gradient(20deg,#fbf4cd,#ffe172);
     margin-top: 5rem;
-    margin-left: 45rem;
+}
+.input {
+    border: 0px solid;
+    border-radius: 10%;
+    background-color: #ffe172;
+}
+
+.user-item{
+    background-image: linear-gradient(20deg,#fbf4cd,#ffe172);
+}
+.users{
+    width: 80%;
+}
+.search{
+    border:1px solid black;
+    border-radius: 10px;
+    width: 50%;
 }

@@ -10,11 +10,11 @@
 
 /*Sidebar*/
 #header {
-    position: absolute;
+    /*position: absolute;*/
     width: 300px;
 }
 #header .pro-sidebar {
-    height: 50vw;
+    height: 52.5rem;
 }
 #header .closemenu {
     color: #000;

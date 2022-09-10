@@ -19,20 +19,32 @@ export const Login = () => {
         }
         UserDataService.getAll()
             .then(res => {
-                debugger
                 const userItems = res.data;
                 console.log("userItems", res.data);
-                const data = userItems.find((item) => item.password === items.password)||"";
-                console.log("data password", data);
-                const id=data._id;
-                console.log("id--->", id);
-                if ( items.password === data.password) {
-                    alert("login successfully");
-                    navigate(`/dashboard/${id}`);
+                if(userItem.email==='bvm123@gmail.com'){
+                    navigate(`/admin`);
                 }
-                else {
-                    alert("Invalid password or email");
+                else{
+                    const data = userItems.find((item) => item.password === items.password)||"";
+                    console.log("data password", data);
+                    const id=data._id;
+
+                    console.log("id--->", id);
+                    if(data.position==="Team Leader"){
+                        navigate(`/leader/${id}`);
+                    }
+                    else{
+                        if ( items.password === data.password) {
+                            alert("login successfully");
+                            navigate(`/dashboard/${id}`);
+                        }
+                        else {
+                            alert("Invalid password or email");
+                        }
+                    }
+
                 }
+
 
             })
             .catch(e => {

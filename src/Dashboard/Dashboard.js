@@ -34,28 +34,30 @@ export const Dashboard = () => {
            <div >
                <Sidebar/>
            </div>
-           <div>
+           <div style={{width:"100%",marginLeft:"25rem"}}>
                <div key="user._id" className="user-data">
                    <h2 className="text-center">User's Detail</h2>
-                   <div className="d-flex">
-                       <label htmlFor="email" className="form-label my-3 mx-4"><strong>Name:</strong></label>
-                       <label htmlFor="email" className=" my-3 mx-4">{item.name}</label>
-                   </div>
-                   <div className="d-flex ">
-                       <label htmlFor="email" className="form-label my-3 mx-4"><strong>Email:</strong></label>
-                       <label htmlFor="email" className="form-label my-3 mx-4">{item.email}</label>
-                   </div>
-                   <div className="d-flex ">
-                       <label htmlFor="email" className="form-label my-3 mx-4"><strong>Number:</strong></label>
-                       <label htmlFor="email" className="form-label my-3 mx-4">{item.number}</label>
-                   </div>
-                   <div className="d-flex">
-                       <label htmlFor="email" className="form-label my-3 mx-4"><strong>Position:</strong></label>
-                       <label htmlFor="email" className="form-label my-3 mx-4">{item.position}</label>
-                   </div>
-                   <div className="d-flex">
-                       <label htmlFor="email" className="form-label my-3 mx-4"><strong>City:</strong></label>
-                       <label htmlFor="email" className="form-label my-3 mx-4">{item.city}</label>
+                   <div className="">
+                       <div className="input">
+                           <label htmlFor="email" className="my-3 mx-4"><strong>Name:</strong></label>
+                           <label htmlFor="email" className=" my-3 mx-4">{item.name}</label>
+                       </div>
+                       <div className="input ">
+                           <label htmlFor="email" className=" my-3 mx-4"><strong>Email:</strong></label>
+                           <label htmlFor="email" className=" my-3 mx-4">{item.email}</label>
+                       </div>
+                       <div className="input ">
+                           <label htmlFor="email" className=" my-3 mx-4"><strong>Number:</strong></label>
+                           <label htmlFor="email" className=" my-3 mx-4">{item.number}</label>
+                       </div>
+                       <div className="input">
+                           <label htmlFor="email" className=" my-3 mx-4"><strong>Position:</strong></label>
+                           <label htmlFor="email" className=" my-3 mx-4">{item.position}</label>
+                       </div>
+                       <div className="input">
+                           <label htmlFor="email" className=" my-3 mx-4"><strong>City:</strong></label>
+                           <label htmlFor="email" className=" my-3 mx-4">{item.city}</label>
+                       </div>
                    </div>
                    {/*<div className="d-flex">*/}
                    {/*    <label htmlFor="email" className="form-label my-3 mx-4"><strong>Hobby:</strong></label>*/}
