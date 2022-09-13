@@ -31,16 +31,16 @@ export default function Navbar(props) {
         navigate('/signup');
     };
     const handleSupport = () => {
-        navigate('/support');
+        navigate('/admin');
     };
     const handleFeatures = () => {
-        navigate('/features');
+        navigate('/admin');
     };
     const handleResource = () => {
-        navigate('/resources');
+        navigate('/signin');
     };
     const handleContact = () => {
-        navigate('/contact');
+        navigate('/admin');
     };
     const handleClick = () => {
         navigate('/');
@@ -60,22 +60,22 @@ export default function Navbar(props) {
                         <ListItemText primary="Product" onClick={handleSupport}/>
                     </ListItemButton>
                 </ListItem>
-                <ListItem key="product" disablePadding>
+                <ListItem key="gallary" disablePadding>
                     <ListItemButton sx={{textAlign: 'center'}}>
                         <ListItemText primary="Features" onClick={handleFeatures}/>
                     </ListItemButton>
                 </ListItem>
-                <ListItem key="product" disablePadding>
+                <ListItem key="salary" disablePadding>
                     <ListItemButton sx={{textAlign: 'center'}}>
                         <ListItemText primary="Resources" onClick={handleResource}/>
                     </ListItemButton>
                 </ListItem>
-                <ListItem key="product" disablePadding>
+                <ListItem key="contact" disablePadding>
                     <ListItemButton sx={{textAlign: 'center'}}>
                         <ListItemText primary="Contact Us" onClick={handleContact}/>
                     </ListItemButton>
                 </ListItem>
-                <ListItem key="product" disablePadding>
+                <ListItem key="login" disablePadding>
                     <ListItemButton sx={{textAlign: 'center'}}>
                         <ListItemText primary="Sign In" onClick={handleOnClick}/>
                     </ListItemButton>

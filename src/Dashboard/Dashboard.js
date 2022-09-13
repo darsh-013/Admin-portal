@@ -11,7 +11,7 @@ export const Dashboard = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            getUser(id.index);
+            getUser( );
         }, 100);
     }, []);
     const getUser = () => {

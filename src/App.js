@@ -11,7 +11,6 @@ import Admin from "./Dashboard/Admin";
 import './App.css';
 import Leader from "./Dashboard/Leader";
 
-
 function App() {
   return (
     <>
@@ -28,16 +27,16 @@ function App() {
                        element={<Dashboard/>}
                 />
                 <Route exact path='/dashboard/:index'
-                       element={< Dashboard />}
+                       element={<Dashboard/>}
                 />
-                <Route path="/admin"
+                <Route exact path="/admin"
                        element={<Admin/>}
                 />
-                <Route path="/leader"
+                <Route exact path="/leader"
                        element={<Leader/>}
                 />
                 <Route exact path='/leader/:index'
-                       element={< Leader />}
+                       element={<Leader/>}
                 />
             </Routes>
         </Router>

@@ -1,8 +1,7 @@
 import axios from "axios";
 class UserDataService {
-
   getAll() {
-    return axios.get("http://localhost:8080/users");
+    return axios.get(`http://localhost:8080/users`);
   }
 
   get(id) {
@@ -11,6 +10,7 @@ class UserDataService {
 
   create(userData) {
     return axios.post("http://localhost:8080/users", userData);
+    // return axios.post(`/users`,userData);
   }
 
   update(id, userData) {

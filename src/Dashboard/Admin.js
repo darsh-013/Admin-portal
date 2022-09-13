@@ -9,8 +9,6 @@ export const Admin = () => {
 
     const [item, setItem] = useState([]);
     const [text, setText] = useState("");
-    // const [page, setPage] = React.useState(0);
-    // const [rowsPerPage, setRowsPerPage] = React.useState(2);
 
     useEffect( ()=>{
         setTimeout( ()=>{
@@ -45,11 +43,6 @@ export const Admin = () => {
         }
     }
 
-    // const handleReset = () =>{
-    //     const data1 = JSON.parse(localStorage.getItem("users"));
-    //     setItem(data1);
-    // }
-
     const removeData = (id) =>{
         setItem(item.filter((item)=>item._id!==id));
         UserDataService.delete(id)
@@ -65,14 +58,7 @@ export const Admin = () => {
     //     // navigate(`/signup/${id}`);
     //     navigate('/signup');
     // };
-    console.log("Item--->",item);
-    // const handleChangePage = (newPage) => {
-    //     setPage(newPage);
-    // };
 
-    // const handleChangeRowsPerPage = event => {
-    //     setRowsPerPage(event.target.value);
-    // };
     return (
         <div className="d-flex">
             <div>
@@ -117,7 +103,6 @@ export const Admin = () => {
 
                         {
                             !item?.length ? "There r no users for display" :
-                                // item.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((user) => {
                                 item.map((user) => {
                                     return (
                                         <tbody >
@@ -150,17 +135,6 @@ export const Admin = () => {
                                 })
                         }
                     </table>
-                    {/* <div className='d-flex my-2 mx-3'>
-                    <TablePagination
-                        rowsPerPageOptions={[2, 4, 6]}
-                        component="div"
-                        count={item.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                    />
-                </div> */}
                 </div>
             </div>
         </div>

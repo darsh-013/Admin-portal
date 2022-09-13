@@ -8,7 +8,9 @@ export const Registration = (props) => {
 
     let navigate = useNavigate();
     let id = useParams();
-    const [error, setValidation] = useState({})
+    const [error, setValidation] = useState({});
+    const [isVisible, setIsVisible] = useState(false);
+    const [lead,setLead] = useState([]);
 
     const [users, setUsers] = useState(
         {
@@ -18,11 +20,20 @@ export const Registration = (props) => {
             password: "",
             number: "",
             position: "",
-            // hobby: [],
+            member: [],
+            leader:[],
             city: ""
             // image: null
         }
     );
+
+    const handleLeader = e => {
+        setIsVisible(true);
+        retrieveUser();
+    };
+    const handleClick = e => {
+        setIsVisible(false);
+    };
 
     const onHandleChange = (e) => {
         const {name, value, files} = e.target;
@@ -56,8 +67,10 @@ export const Registration = (props) => {
             password: users.password,
             number: users.number,
             position: users.position,
+            member: users.member,
+            leader: users.leader,
             // hobby: users.hobby || [],
-            city: users.city,
+            city: users.city || [],
             // image: users.image
         };
 
@@ -97,7 +110,7 @@ export const Registration = (props) => {
         setTimeout(() => {
             id.index && getUser(id.index);
         }, 100);
-    }, []);
+    }, [id]);
 
     const getUser = (id) => {
         UserDataService.get(id)
@@ -111,6 +124,34 @@ export const Registration = (props) => {
                 console.log(e);
             });
     }
+
+    // useEffect( ()=>{
+    //     setTimeout( ()=>{
+    //         // retrieveUser();
+    //     }, 10);
+    // });
+
+    const retrieveUser=()=>{
+        UserDataService.getAll()
+            .then(res => {
+                let userItems= res.data;
+                console.log("userItems", userItems);
+                userItems.map((item)=>{
+                    users.member.push(item._id);
+                    lead.push(item._id);
+                });
+                userItems.map((item)=>{
+                    if(item.position==="Team Leader"){
+                        users.leader.push(item._id);
+                    }
+                });
+                console.log("Leader-->",users.leader);
+                console.log("member===>", users.member);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
 
     const handleValidate = (name, value) => {
         let validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -163,7 +204,6 @@ export const Registration = (props) => {
         <>
             <div className="">
                 <div>
-
                     <div className='addUser'>
 
                         <div className="my-5">
@@ -171,7 +211,7 @@ export const Registration = (props) => {
                             <div className="item">
 
                                 {/*name*/}
-                                <div className="mb-3" key="users">
+                                <div className="mb-3" key="name">
                                     <label htmlFor="name" className="form-label"><strong>Name :</strong> </label>
                                     <input type="text"
                                            name="name"
@@ -180,14 +220,13 @@ export const Registration = (props) => {
                                                onHandleChange(e)
                                            }}
                                            className="form-control"
-
                                     />
 
                                     <p style={{color: 'red'}}>{error.name}</p>
                                 </div>
 
                                 {/*email*/}
-                                <div className="mb-3" key="users">
+                                <div className="mb-3" key="email">
                                     <label htmlFor="email" className="form-label"><strong>Email :</strong></label>
                                     <input type="text"
                                            name="email"
@@ -215,7 +254,7 @@ export const Registration = (props) => {
                                 </div>
 
                                 {/*number*/}
-                                <div className="mb-3" key="users">
+                                <div className="mb-3" key="number">
                                     <label htmlFor="number" className="form-label"><strong>Contact no.:</strong></label>
                                     <input type="text"
                                            value={users.number}
@@ -229,6 +268,38 @@ export const Registration = (props) => {
                                     <p style={{color: 'red'}}>{error.number}</p>
                                 </div>
 
+                                {/* city */}
+                                <div className="city">
+
+                                    <div className="dropdown">
+
+                                        <label htmlFor="number" className="form-label"
+                                               style={{marginRight: "1rem"}}><strong>City : </strong></label>
+
+                                        <select
+                                            onChange={(e) => {
+                                                onHandleChange(e)
+                                            }}
+                                            style={{border:"1px solid lightGray", borderRadius:"2px"}}
+                                            value={users.city || ""} name="city" id="city">
+                                            <option value="" name="city">select city</option>
+                                            <option value="pune" name="city"
+                                                    defaultValue={(users || {}).city === "pune" ? true : false}>pune
+                                            </option>
+                                            <option value="mumbai" name="city"
+                                                    defaultValue={(users || {}).city === "mumbai" ? true : false}>mumbai
+                                            </option>
+                                            <option value="kolkata" name="city"
+                                                    defaultValue={(users || {}).city === "kolkata" ? true : false}>kolkata
+                                            </option>
+                                            <option value="bangluru" name="city"
+                                                    defaultValue={(users || {}).city === "bangluru" ? true : false}>bangluru
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <p style={{color: 'red'}}>{error.city}</p>
+                                </div>
+
                                 {/* Position */}
                                 <div className="position-radio">
                                     <label htmlFor="number" className="form-labe "
@@ -240,6 +311,7 @@ export const Registration = (props) => {
                                                onChange={(e) => {
                                                    onHandleChange(e)
                                                }}
+                                               onClick={handleClick}
                                                id="inlineRadio1"
                                                value="Team Leader"
                                                checked={(users || {}).position === "Team Leader" ? true : false}
@@ -254,48 +326,40 @@ export const Registration = (props) => {
                                                onChange={(e) => {
                                                    onHandleChange(e)
                                                }}
+                                               onClick={handleLeader}
                                                id="inlineRadio2"
                                                value="Employee"
                                                checked={(users || {}).position === "Employee" ? true : false}
                                         />
                                         <label className="form-check-label" htmlFor="inlineRadio2">Employee</label>
                                     </div>
+
                                     <br/>
                                     <p style={{color: 'red'}}>{error.position}</p>
                                 </div>
 
+                                {/*Team Leader*/}
+                                <div style={{visibility: isVisible ? 'visible' : 'hidden'}}>
 
-                                {/* city */}
-                                <div className="city">
-
-                                    <div className="dropdown">
-
-                                        <label htmlFor="number" className="form-label"
-                                               style={{marginRight: "1rem"}}><strong>City : </strong></label>
-
-                                        <select
-                                            onChange={(e) => {
-                                                onHandleChange(e)
-                                            }}
-                                            value={users.city || ""} name="city" id="city">
-                                            <option value="" name="city">select city</option>
-                                            <option value="pune" name="city"
-                                                    selected={(users || {}).city === "pune" ? true : false}>pune
-                                            </option>
-                                            <option value="mumbai" name="city"
-                                                    selected={(users || {}).city === "mumbai" ? true : false}>mumbai
-                                            </option>
-                                            <option value="kolkata" name="city"
-                                                    selected={(users || {}).city === "kolkata" ? true : false}>kolkata
-                                            </option>
-                                            <option value="bangluru" name="city"
-                                                    selected={(users || {}).city === "bangluru" ? true : false}>bangluru
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <p style={{color: 'red'}}>{error.city}</p>
+                                        <div className="dropdown">
+                                            <label htmlFor="leader" className="form-label"><strong>Team Leader:</strong>
+                                                <select
+                                                    onChange={(e) => {onHandleChange(e)}}
+                                                    className="mx-3"
+                                                    style={{border:"1px solid lightGray", borderRadius:"2px"}}
+                                                    name="leader" id="leader">
+                                                >
+                                                    <option value="" name="leader">select leader</option>
+                                                    {
+                                                        lead.map((item)=>{
+                                                            return(
+                                                            <option value={item} name="leader">{item}</option>
+                                                            )})
+                                                    }
+                                                </select>
+                                            </label>
+                                        </div>
                                 </div>
-
 
                                 {/*/!* Hobby *!/*/}
                                 {/*<div className="hobby">*/}
