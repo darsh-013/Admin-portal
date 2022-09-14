@@ -1,0 +1,31 @@
+.img{
+    width: 100%;
+}
+.c-header{
+    display: flex;
+    flex-direction: row;
+}
+.contact-header{
+    width: 50%;
+}
+.contact-img{
+    width: 38rem;
+}
+.contact-card{
+    display: flex;
+    flex-direction: row;
+}
+.office{
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 600px) {
+    .c-header{
+        flex-direction: column;
+    }
+    .office{
+        flex-direction: column;
+    }
+}
+

@@ -138,10 +138,11 @@ export const Registration = (props) => {
                 console.log("userItems", userItems);
                 userItems.map((item)=>{
                     users.member.push(item._id);
-                    lead.push(item._id);
+                    // lead.push(item._id);
                 });
                 userItems.map((item)=>{
                     if(item.position==="Team Leader"){
+                        lead.push(item._id);
                         users.leader.push(item._id);
                     }
                 });

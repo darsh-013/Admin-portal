@@ -1,0 +1,16 @@
+.client{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-around;
+}
+.client1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+@media screen and (max-width: 900px){
+    .client{
+        flex-direction: column;
+    }
+}

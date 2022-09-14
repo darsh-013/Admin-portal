@@ -30,17 +30,17 @@ export default function Navbar(props) {
     const handleOnClick = () => {
         navigate('/signup');
     };
-    const handleSupport = () => {
-        navigate('/admin');
+    const handleHome = () => {
+        navigate('/');
     };
-    const handleFeatures = () => {
-        navigate('/admin');
+    const handleAbout = () => {
+        navigate('/about');
     };
-    const handleResource = () => {
-        navigate('/signin');
+    const handleProduct = () => {
+        navigate('/product');
     };
     const handleContact = () => {
-        navigate('/admin');
+        navigate('/contact');
     };
     const handleClick = () => {
         navigate('/');
@@ -57,17 +57,17 @@ export default function Navbar(props) {
 
                 <ListItem key="product" disablePadding>
                     <ListItemButton sx={{textAlign: 'center'}}>
-                        <ListItemText primary="Product" onClick={handleSupport}/>
+                        <ListItemText primary="Home" onClick={handleHome}/>
                     </ListItemButton>
                 </ListItem>
                 <ListItem key="gallary" disablePadding>
                     <ListItemButton sx={{textAlign: 'center'}}>
-                        <ListItemText primary="Features" onClick={handleFeatures}/>
+                        <ListItemText primary="About Us" onClick={handleAbout}/>
                     </ListItemButton>
                 </ListItem>
                 <ListItem key="salary" disablePadding>
                     <ListItemButton sx={{textAlign: 'center'}}>
-                        <ListItemText primary="Resources" onClick={handleResource}/>
+                        <ListItemText primary="Product" onClick={handleProduct}/>
                     </ListItemButton>
                 </ListItem>
                 <ListItem key="contact" disablePadding>
@@ -89,10 +89,10 @@ export default function Navbar(props) {
 
     return (
         <Box>
-            <AppBar sx={{bgcolor: "white"}}>
+            <AppBar sx={{bgcolor: "#0B1320"}}>
                 <Toolbar className="navbar-item">
                     <Toolbar>
-                        <Button key="Fresh-work" sx={{color: 'black'}}
+                        <Button key="Fresh-work" sx={{color: 'white'}}
                                 onClick={handleClick}
                         >
                             <h5>Admin</h5>
@@ -104,33 +104,33 @@ export default function Navbar(props) {
                     <Box sx={{display: "flex", flexDirection: "row", gap: "15px"}}>
 
                         <Button key="The Team"
-                                sx={{color: "black", textTransform: 'none', display: {xs: 'none', sm: 'block'}}}
-                                onClick={handleSupport}
+                                sx={{color: "white", textTransform: 'none', display: {xs: 'none', sm: 'block'}}}
+                                onClick={handleHome}
                         >
                             <strong>Home</strong>
                         </Button>
                         <Button key="feature"
-                                sx={{color: 'black', textTransform: 'none', display: {xs: 'none', sm: 'block'}}}
-                                onClick={handleFeatures}
+                                sx={{color: 'white', textTransform: 'none', display: {xs: 'none', sm: 'block'}}}
+                                onClick={handleAbout}
                         >
                             <strong>About Us</strong>
                         </Button>
 
                         <Button key="resource"
-                                sx={{color: 'black', textTransform: 'none', display: {xs: 'none', sm: 'block'}}}
-                                onClick={handleResource}
+                                sx={{color: 'white', textTransform: 'none', display: {xs: 'none', sm: 'block'}}}
+                                onClick={handleProduct}
                         >
-                            <strong>Faqs</strong>
+                            <strong>Products</strong>
                         </Button>
                         <Button key="contact"
-                                sx={{color: 'black', textTransform: 'none', display: {xs: 'none', sm: 'block'}}}
+                                sx={{color: 'white', textTransform: 'none', display: {xs: 'none', sm: 'block'}}}
                                 onClick={handleContact}
                         >
                             <strong>Contact Us</strong>
                         </Button>
 
-                        <Divider sx={{borderLeft: "1px solid black", margin: '5px'}}/>
-                        <Button sx={{color: 'black', textTransform: 'none', display: {xs: 'none', sm: 'block'}}}
+                        <Divider sx={{borderLeft: "1px solid white", margin: '5px'}}/>
+                        <Button sx={{color: 'white', textTransform: 'none', display: {xs: 'none', sm: 'block'}}}
                                 onClick={handleOnClick}><strong>Sign Up</strong></Button>
                     </Box>
 
@@ -140,7 +140,7 @@ export default function Navbar(props) {
                         onClick={handleDrawerToggle}
                         sx={{mr: 2, display: {sm: 'none'}}}
                     >
-                        <MenuIcon style={{color:"black"}}/>
+                        <MenuIcon style={{color:"white"}}/>
                     </IconButton>
                 </Toolbar>
             </AppBar>

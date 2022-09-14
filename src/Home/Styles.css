@@ -1,0 +1,48 @@
+.header{
+    display: flex;
+    margin-top: 3rem;
+    flex-direction: row;
+}
+.all-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:2rem;
+}
+.cards{
+    width: 27%;
+}
+.card-item{
+    display: flex;
+    flex-direction: row;
+    gap:8rem;
+}
+.images{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.image{
+    width: 38vw;
+    border: 1px solid lightgrey;
+}
+@media only screen and (max-width: 600px) {
+    .header{
+        flex-direction: column;
+    }
+    .images{
+        flex-direction: column;
+    }
+    .all-cards{
+        flex-direction: column;
+    }
+    .image{
+        width: 50vw;
+    }
+    .cards{
+        width: 100%;
+    }
+    .card-item{
+        flex-direction: column;
+    }
+}

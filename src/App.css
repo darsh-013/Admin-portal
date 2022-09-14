@@ -71,9 +71,3 @@
 .sidebar-item:hover {
     background: linear-gradient(0deg, #fece00 0%, #ffe172 100%);
 }
-
-@media only screen and (max-width: 720px) {
-    html {
-        overflow: hidden;
-    }
-}

@@ -8,8 +8,12 @@ import Registration from "./components/Registration/Registration";
 import Login from "./components/SignIn/Login";
 import Dashboard from "./Dashboard/Dashboard";
 import Admin from "./Dashboard/Admin";
-import './App.css';
 import Leader from "./Dashboard/Leader";
+import Home from "./Home/Home";
+import About from "./components/About/About";
+import Product from "./components/Product/Product";
+import Contact from "./components/ContactUs/Contact";
+import './App.css';
 
 function App() {
   return (
@@ -37,6 +41,18 @@ function App() {
                 />
                 <Route exact path='/leader/:index'
                        element={<Leader/>}
+                />
+                <Route exact path='/'
+                       element={<Home/>}
+                />
+                <Route exact path='/about'
+                       element={<About/>}
+                />
+                <Route exact path='/product'
+                       element={<Product/>}
+                />
+                <Route exact path='/contact'
+                       element={<Contact/>}
                 />
             </Routes>
         </Router>
