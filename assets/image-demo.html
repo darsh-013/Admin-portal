@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Demo - Admin Portal</title>
+  <style>
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial; padding: 24px; background:#f8fafc; color:#0f172a }
+    .card { background: #fff; border-radius: 8px; padding: 18px; box-shadow: 0 6px 18px rgba(2,6,23,0.06); max-width: 900px }
+    img { display:block; max-width:100%; height:auto; margin-bottom:16px }
+    .row { display:flex; gap:16px; align-items:center }
+    .avatar { width:64px; height:64px }
+  </style>
+</head>
+<body>
+  <h1>Image demo</h1>
+  <div class="card">
+    <h2>SVG logo</h2>
+    <img src="assets/images/logo.svg" alt="Logo">
+
+    <h2>Hero SVG</h2>
+    <img src="assets/images/hero.svg" alt="Hero image">
+
+    <h2>User avatar</h2>
+    <div class="row">
+      <img class="avatar" src="assets/images/avatar.svg" alt="Avatar">
+      <div>
+        <strong>Darsh</strong>
+        <div>Example user</div>
+      </div>
+    </div>
+
+    <p>Open this file in your browser or serve the repo with a static server (e.g. <code>npx http-server</code>) and navigate to <code>/assets/image-demo.html</code>.</p>
+  </div>
+</body>
+</html>
